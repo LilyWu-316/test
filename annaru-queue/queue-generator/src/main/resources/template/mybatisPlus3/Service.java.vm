@@ -1,0 +1,24 @@
+package ${package}.${moduleName}.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${mainPath}.${moduleName}.result.PageParams;
+import ${package}.${moduleName}.model.${className};
+
+/**
+ * ${comments}
+ *
+ * @Author ${author}
+ * @Date  ${datetime}
+ */
+public interface I${className}Service extends IService<${className}> {
+
+    /**
+    * 多表页面信息查询
+    * @param pageParams
+    * @return
+    */
+    PageParams selectDataPage(PageParams pageParams);
+
+
+}
+

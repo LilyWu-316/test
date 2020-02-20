@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/annaru-queue.iml" filepath="$PROJECT_DIR$/annaru-queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/queue-common/queue-common.iml" filepath="$PROJECT_DIR$/queue-common/queue-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/queue-generator/queue-generator.iml" filepath="$PROJECT_DIR$/queue-generator/queue-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/queue-service/queue-service.iml" filepath="$PROJECT_DIR$/queue-service/queue-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/queue-ui/queue-ui.iml" filepath="$PROJECT_DIR$/queue-ui/queue-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/queue-web/queue-web.iml" filepath="$PROJECT_DIR$/queue-web/queue-web.iml" />
+    </modules>
+  </component>
+</project>

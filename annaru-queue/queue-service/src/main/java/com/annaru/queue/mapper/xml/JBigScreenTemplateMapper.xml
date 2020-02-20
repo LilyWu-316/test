@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.annaru.queue.mapper.JBigScreenTemplateMapper">
+
+	<!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.annaru.queue.model.JBigScreenTemplate" >
+        <result column="id" property="id" />
+        <result column="b_template_name" property="bTemplateName" />
+        <result column="b_template_picture" property="bTemplatePicture" />
+        <result column="status" property="status" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 多表页面信息查询分页 -->
+    <select id="selectDataPage" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        j_big_screen_template
+        <where>
+            1 = 1
+            AND is_delete = #{jBigScreenTemplate.isDelete}
+            <if test="jBigScreenTemplate.bTemplateName != null and jBigScreenTemplate.bTemplateName != ''">
+               AND b_template_name LIKE CONCAT('%', #{jBigScreenTemplate.bTemplateName}, '%')
+            </if>
+        </where>
+
+    </select>
+
+
+</mapper>

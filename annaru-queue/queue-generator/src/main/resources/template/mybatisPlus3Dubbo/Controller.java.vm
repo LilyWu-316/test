@@ -1,0 +1,109 @@
+package ${package}.${moduleName}.controller;
+
+import java.util.*;
+
+import org.apache.dubbo.config.annotation.Reference;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+import ${mainPath}.common.base.BaseController;
+import ${mainPath}.common.result.PageParams;
+import ${mainPath}.common.util.UUIDGenerator;
+import ${mainPath}.upms.shiro.ShiroKit;
+import ${mainPath}.enterprise.service.IEnterpriseService;
+import ${mainPath}.common.result.ResultMap;
+
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.service.I${className}Service;
+import javax.validation.Valid;
+
+
+
+/**
+ * ${comments}
+ *
+ * @Author ${author}
+ * @Date  ${datetime}
+ */
+@Api(value = "${comments}接口", tags = {"${comments}接口"})
+@RestController
+@RequestMapping("${moduleName}/${pathName}")
+public class ${className}Controller extends BaseController {
+    @Reference
+    private I${className}Service ${classname}Service;
+
+    @Reference
+    private IEnterpriseService sysEnterpriseService;
+
+    @ApiOperation(value = "${comments}列表", notes = "${comments}列表")
+    @GetMapping("/list")
+    @RequiresPermissions("${moduleName}/${pathName}/list")
+    public Object list(@RequestParam Map<String, Object> params){
+        PageParams page = ${classname}Service.selectDataGrid(params);
+        return ResultMap.ok().put("page",page);
+    }
+
+
+    @ApiOperation(value = "获取${comments}", notes = "获取${comments}")
+    @GetMapping("/info/{${pk.attrname}}")
+    @RequiresPermissions("${moduleName}/${pathName}/info")
+    public Object info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+        ${className} ${classname} = ${classname}Service.getById(${pk.attrname});
+        return ResultMap.ok().put("${classname}",${classname});
+    }
+
+    @ApiOperation(value = "保存${comments}", notes = "保存${comments}")
+    @PostMapping("/save")
+    @RequiresPermissions("${moduleName}/${pathName}/save")
+    public Object save(@Valid @RequestBody ${className} ${classname}) {
+        try {
+
+            //获取企业ID前缀，生成UUID
+            ${classname}.setCreateTime(new Date());
+            ${classname}.setCreateUser(ShiroKit.getUser().getLoginName());
+            ${classname}.setUpdateTime(new Date());
+            ${classname}.setUpdateUser(ShiroKit.getUser().getLoginName());
+            ${classname}Service.save(${classname});
+            return ResultMap.ok("添加成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResultMap.error("运行异常，请联系管理员");
+        }
+    }
+
+    @ApiOperation(value = "修改${comments}", notes = "修改${comments}")
+    @PostMapping("/update")
+    @RequiresPermissions("${moduleName}/${pathName}/update")
+    public Object update(@Valid @RequestBody ${className} ${classname}) {
+        try {
+            ${classname}.setUpdateUser(ShiroKit.getUser().getLoginName());
+            ${classname}.setUpdateTime(new Date());
+            ${classname}Service.updateById(${classname});
+            return ResultMap.ok("修改成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResultMap.error("运行异常，请联系管理员");
+        }
+
+    }
+
+    /**
+     * 删除
+     */
+    @ApiOperation(value = "删除${comments}", notes = "删除${comments}")
+    @PostMapping("/delete")
+    @RequiresPermissions("${moduleName}/${pathName}/delete")
+    public Object delete(@RequestBody ${pk.attrType}[]${pk.attrname}s) {
+        try {
+            ${classname}Service.removeByIds(Arrays.asList(${pk.attrname}s));
+            return ResultMap.ok("删除成功！");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResultMap.error("运行异常，请联系管理员");
+        }
+
+    }
+
+}

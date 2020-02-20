@@ -1,0 +1,25 @@
+package ${package}.${moduleName}.mapper;
+
+import ${package}.${moduleName}.model.${className};
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Description ${comments}
+ * @Author ${author}
+ * @Date  ${datetime}
+ */
+public interface ${className}Mapper extends BaseMapper<${className}> {
+
+    /**
+    * 多表页面信息查询
+    * @param page
+    * @return
+    */
+    IPage<${className}> selectDataPage(Page page);
+
+}

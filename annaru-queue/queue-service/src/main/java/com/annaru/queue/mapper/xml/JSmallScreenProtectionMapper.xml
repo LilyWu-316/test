@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.annaru.queue.mapper.JSmallScreenProtectionMapper">
+
+	<!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.annaru.queue.model.JSmallScreenProtection" >
+        <result column="id" property="id" />
+        <result column="protection_name" property="protectionName" />
+        <result column="protection_picture" property="protectionPicture" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 多表页面信息查询分页 -->
+    <select id="selectDataPage" resultMap="BaseResultMap">
+
+    </select>
+
+
+</mapper>

@@ -1,0 +1,141 @@
+server:
+  port: 9294
+  tomcat:
+    uri-encoding: UTF-8
+    max-connections: 1000
+    min-spare-threads: 30
+  connection-timeout: 5000ms
+
+spring:
+  application:
+    name: ${project.artifactId}
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: false
+  resources:
+    add-mappings: false
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    dynamic:
+      druid:
+        initial-size: 1
+        max-active: 20
+        min-idle: 1
+        max-wait: 60000
+        min-evictable-idle-time-millis: 30000
+        max-evictable-idle-time-millis: 30000
+        time-between-eviction-runs-millis: 60000
+        validation-query: select 'x'
+        validation-query-timeout: -1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        pool-prepared-statements: true
+        filters: stat,wall
+        share-prepared-statements: true
+      primary: mysql
+      datasource:
+        mysql:
+          username: root
+          password: AnnaruCn2019
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/drug_queue_rj?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+          druid:
+            validation-query: select 'x'
+        oracle:
+          username: FYJ_WJ
+          password: FYJ_WJ#!E
+          url: jdbc:oracle:thin:@10.98.236.10:1521:bsphis
+          driver-class-name: oracle.jdbc.driver.OracleDriver
+          druid:
+            validation-query: select 1 FROM DUAL
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    timeout: 3600ms
+    #    cluster:
+    #      max-redirects: 3
+    #      nodes: 127.0.0.1:7000, 127.0.0.1:7001, 127.0.0.1:7002, 127.0.0.1:7003, 127.0.0.1:7004,127.0.0.1:7005
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+    lettuce:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 50
+        max-wait: 6000ms
+      shutdown-timeout: 100ms
+  session:
+    store-type: redis
+#  boot:
+#    admin:
+#      client:
+#        url: http://127.0.0.1:8180
+#        instance:
+#          service-base-url: http://127.0.0.1:${server.port}
+#          management-base-url: http://127.0.0.1:${server.port}
+
+mybatis-plus:
+  mapper-locations: classpath*:com/annaru/queue/**/mapper/xml/*Mapper.xml
+  type-aliases-package: com.annaru.queue.**.model
+  global-config:
+    db-config:
+      id-type: AUTO
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+
+info:
+  name: 基础平台WEB服务
+  version: 1.0.0
+
+fdfs:
+  file-upload:
+    server: http://127.0.0.1:9090
+  soTimeout: 1500
+  connectTimeout: 600
+  thumbImage:
+    width: 150
+    height: 150
+  trackerList[0]: 127.0.0.1:22122
+
+annaru:
+  expire: 1800
+  queue:
+    loginUrl: /login
+    successUrl: /index
+    unauthorizedUrl: /unauth
+    #shiro、jwt、cas
+    type: jwt
+  shiro:
+    session: annaru-queue-shiro-session-
+    cache: annaru-queue-shiro-cache-
+    cookie: /annaru-queue
+  scheduler:
+    name: annaru-queue-
+  file-upload:
+    prefix: D:\\upload-file
+    server: http://127.0.0.1
+  redisson:
+    model: single

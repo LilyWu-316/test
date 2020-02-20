@@ -1,0 +1,33 @@
+package ${package}.${moduleName}.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${mainPath}.common.result.PageParams;
+import ${package}.${moduleName}.entity.${className};
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ${comments}
+ *
+ * @Author ${author}
+ * @Date  ${datetime}
+ */
+public interface I${className}Service extends IService<${className}> {
+
+    /**
+    * 多表页面信息查询
+    * @param params
+    * @return
+    */
+    PageParams selectDataGrid(Map<String, Object> params);
+
+    /**
+    * 多表信息查询
+    * @param par
+    * @return
+    */
+    List<Map<String, Object>> select${className}List(Map<String, Object> par);
+
+
+}
+

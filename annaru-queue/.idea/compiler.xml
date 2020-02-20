@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="-generator" />
+        <module name="queue-common" />
+        <module name="queue-generator" />
+        <module name="queue-service" />
+        <module name="queue-ui" />
+        <module name="queue-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="-generator" target="1.8" />
+      <module name="annaru-queue" target="1.8" />
+      <module name="queue-common" target="1.8" />
+      <module name="queue-generator" target="1.8" />
+      <module name="queue-service" target="1.8" />
+      <module name="queue-ui" target="1.8" />
+      <module name="queue-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

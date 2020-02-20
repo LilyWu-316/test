@@ -1,0 +1,30 @@
+package ${package}.${moduleName}.service.impl;
+
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${mainPath}.${moduleName}.result.PageParams;
+
+import ${package}.${moduleName}.mapper.${className}Mapper;
+import ${package}.${moduleName}.model.${className};
+import ${package}.${moduleName}.service.I${className}Service;
+
+
+/**
+ * ${comments}
+ *
+ * @Author ${author}
+ * @Date  ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements I${className}Service {
+
+    @Override
+    public PageParams selectDataPage(PageParams pageParams){
+        IPage<${className}> iPage = this.baseMapper.selectDataPage(pageParams);
+        return new PageParams(iPage);
+    }
+
+}

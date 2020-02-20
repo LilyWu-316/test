@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.annaru.queue.mapper.JSmallScreenConfigMapper">
+
+	<!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.annaru.queue.model.JSmallScreenConfig" >
+        <result column="id" property="id" />
+        <result column="s_screen_no" property="sScreenNo" />
+        <result column="s_screen_ip" property="sScreenIp" />
+        <result column="s_screen__name" property="sScreenName" />
+        <result column="sst_id" property="sstId" />
+        <result column="ssp_id" property="sspId" />
+        <result column="protection_status" property="protectionStatus" />
+        <result column="voice_status" property="voiceStatus" />
+        <result column="video_status" property="videoStatus" />
+        <result column="video_info_id" property="videoInfoId" />
+        <result column="screen_content_id" property="screenContentId" />
+        <result column="s_screen_logo" property="sScreenLogo" />
+        <result column="s_screen_title" property="sScreenTitle" />
+        <result column="institution_name" property="institutionName" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 多表页面信息查询分页 -->
+    <select id="selectDataPage" resultMap="BaseResultMap">
+
+    </select>
+
+
+</mapper>

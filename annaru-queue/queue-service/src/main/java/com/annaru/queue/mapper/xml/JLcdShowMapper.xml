@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.annaru.queue.mapper.JLcdShowMapper">
+
+	<!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.annaru.queue.model.JLcdShow" >
+        <result column="id" property="id" />
+        <result column="xpdz" property="xpdz" />
+        <result column="ysxm" property="ysxm" />
+        <result column="ysgh" property="ysgh" />
+        <result column="fjmc" property="fjmc" />
+        <result column="ysgy" property="ysgy" />
+        <result column="pdhm" property="pdhm" />
+        <result column="brxm" property="brxm" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="data_source" property="dataSource" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!-- 多表页面信息查询分页 -->
+    <select id="selectDataPage" resultMap="BaseResultMap">
+
+    </select>
+
+
+</mapper>
